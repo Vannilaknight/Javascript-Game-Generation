@@ -51,3 +51,40 @@ This method takes in four parameters; The Background color, the wall color, the 
 
 ![alt text](http://i.imgur.com/vVlZw52.png "Rendered 2D Dungeon")
 
+### Mountain Generation
+
+`MountainGeneration.Generate()` will take 4 parameters.
+
+- width: width of mountain box
+- height: height of mountain box
+- displacement: how high the mountains generate
+- roughness: How rugged or smooth the mountains are
+
+#### Example
+```javascript
+var mountains = [];
+
+var width = 1920;
+var height = 1000;
+
+mountains.push(MountainGeneration.Generate(width, height, height / 3, .5));
+mountains.push(MountainGeneration.Generate(width, height, height / 2, .5));
+```
+For the example of multiple mountains, generate multiple and place them in an array.
+
+#### Rendering
+To render the mountain you must first initialize the mountains in an array. The renderer will take in the array and render the mountains in order.
+You must also first initialize the canvas of which to render the mountains.
+
+```javascript
+Renderer.InitializeMountain('map', width, height);
+```
+
+After the canvas has been initialized you can call the render method for the mounstains.
+
+```javascript
+Renderer.UpdateMountain(mountains);
+```
+
+Just pass in the array of mountains and it will pick random colors to render them with.
+
